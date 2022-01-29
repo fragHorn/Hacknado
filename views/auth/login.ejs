@@ -1,0 +1,29 @@
+<%- include('../include/head.ejs') %>
+        <link href = '/CSS/navbar.css' type = 'text/css' rel = 'stylesheet'/>
+        <link href = '/CSS/login.css' type = 'text/css' rel = 'stylesheet'/>
+    </head>
+    <body>
+        <%- include('../include/navbar.ejs') %>
+        <main>
+            <div class = 'container'>
+                <h1 class = 'heading'>Login</h1>
+                <% if(!otp) {%>
+                    <form action = '/auth/login?otp=true' method = 'POST'>
+                        <div id = 'div_mobile_no'>
+                            <label for = 'mobile-no' id = 'label_mobile_no'>Mobile Number</label>
+                            <input type = 'number' id = 'mobile-no' name = 'mobileNo'>
+                        </div>
+                        <button type = 'submit' id = 'submit_mobile_no'>Get OTP</button>
+                    </form>
+                <% } else {%>
+                    <form action = '/auth/login' method = 'POST'>
+                        <div id = 'div_mobile_no'>
+                            <label for = 'mobile-no' id = 'label_mobile_no'>Enter OTP</label>
+                            <input type = 'number' id = 'mobile-no' name = 'otp''>
+                        </div>
+                        <button type = 'submit' id = 'submit_mobile_no'>LogIn</button>
+                    </form>
+                <% }%>
+            </div>
+        </main>
+<%- include('../include/end.ejs') %>

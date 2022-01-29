@@ -1,16 +1,18 @@
 const mongoDB = require('mongodb');
 const { MongoClient } = mongoDB;
+require('dotenv').config();
 
 let _db;
 
 const mongoConnect = callback => {
-    MongoClient.connect('mongodb+srv://viFlan:fragHorn12@mydatabase.1cxcq.mongodb.net/hacknado?retryWrites=true&w=majority', {
+    MongoClient.connect(process.env.MONGODB_URI, {
         useNewUrlParser: true, 
         useUnifiedTopology: true
     })
     .then(client => {
         // console.log(client);
-        _db = client.db;
+        _db = client.db();
+        console.log('Connected!!');
         callback();
     })
     .catch((error) => {

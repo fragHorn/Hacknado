@@ -1,0 +1,39 @@
+<%- include('../include/head.ejs') %>
+        <link href = '/CSS/navbar.css' type = 'text/css' rel = 'stylesheet'/>
+        <link href = '/CSS/recycle.css' type = 'text/css' rel = 'stylesheet'/>
+    </head>
+    <body>
+        <%- include('../include/navbar.ejs') %>
+        <main>
+            <div class = 'container'>
+                <form action = '/recycle/pickup?address=true' method = 'POST'>
+                    <h1 class = 'heading'>Address For PickUp</h1>
+                    <div class = 'input_div'>
+                        <label for = 'house-no' class = 'input_label'>Flat/House No.</label>
+                        <input type = 'text' id = 'house-no' name = 'houseNo' class = 'input_field'/>
+                    </div>
+                    <div class = 'input_div'>
+                        <label for = 'area' class = 'input_label'>Area</label>
+                        <input type = 'text' id = 'area' name = 'area' class = 'input_field'/>
+                    </div>
+                    <div class = 'input_div'>
+                        <label for = 'city' class = 'input_label'>Town/City</label>
+                        <input type = 'text' id = 'city' name = 'city' class = 'input_field'/>
+                    </div>
+                    <div class = 'input_div'>
+                        <label for = 'state' class = 'input_label'>State</label>
+                        <input type = 'text' id = 'state' name = 'state' class = 'input_field'/>
+                    </div>
+                    <div class = 'input_div'>
+                        <label for = 'country' class = 'input_label'>Country</label>
+                        <input type = 'text' id = 'country' name = 'country' class = 'input_field'/>
+                    </div>
+                    <div class = 'input_div'>
+                        <label for = 'pincode' class = 'input_label'>PinCode</label>
+                        <input type = 'number' id = 'pincode' name = 'pincode' class = 'input_field'/>
+                    </div>
+                    <button type = 'submit' class = 'confirm_submit'>Confirm Pick-UP</button>
+                </form>
+            </div>
+        </main>
+    <%- include('../include/end.ejs') %>

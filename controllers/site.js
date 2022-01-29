@@ -1,4 +1,13 @@
+const e = require("express");
+const PickupUser = require('../models/pickup-user');
+const twilio = require('../util/twilio');
+
+const recyclePickup = {};
+
 exports.getHome = (req, res, next) => {
+    let isLoggedIn = false;
+    if(req.session)
+        isLoggedIn = req.session.isLoggedIn;
     res.render('home', {
         pageTitle: 'Home',
         images: [
@@ -7,5 +16,55 @@ exports.getHome = (req, res, next) => {
             '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#63797c;}</style></defs><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><rect class="cls-1" width="500" height="500" rx="40"/><path class="cls-2" d="M448.44,207.53a7.51,7.51,0,0,0,7.35-7.34,7.36,7.36,0,0,0-7.35-7.35H402.66a4.9,4.9,0,0,1,0-9.8h3.95a7.88,7.88,0,0,0,7.82-7.91v-9.71c0-8.19-5.65-15.92-13.75-17.24a16.54,16.54,0,0,0-19.41,16.3v28.36h-93a7.29,7.29,0,0,0-7.35,7.35,7.44,7.44,0,0,0,4.71,6.87,7.57,7.57,0,0,0,2.64.47h3l-10.36,29.21V422.42a19.4,19.4,0,0,0,4.71,12.72,7.36,7.36,0,0,0,2.64,14.23H448.44a7.36,7.36,0,0,0,7.35-7.35,7.49,7.49,0,0,0-4.81-6.88,19.43,19.43,0,0,0,4.81-12.72V236.74l-10.36-29.21Zm-50.59-49.36a7.28,7.28,0,0,1,7.35,7.25,7.35,7.35,0,0,1-14.7,0A7.34,7.34,0,0,1,397.85,158.17Zm18.75,115.5s31.27,83.18,10.66,154.8a9.41,9.41,0,0,1-9.08,6.67H393a9.38,9.38,0,0,1-8-14.33c2.3-3.66,4.82-8,7.34-12.9,25.63-49.65,21.41-110.34.76-153.27,0,0-9.62-20.74-9.5-37.62a9.5,9.5,0,0,1,9.47-9.49h8.85a9.39,9.39,0,0,1,9.36,10.5C409.6,230.85,408.53,253.34,416.6,273.67Z"/><path class="cls-2" d="M257,432.63h-9.36L232.91,181.48a8.37,8.37,0,0,0-1-16.68H215.19V131.33a16.73,16.73,0,0,0-16.74-16.74H98a16.73,16.73,0,0,0-16.74,16.74V164.8H64.54a8.37,8.37,0,0,0-1,16.68L48.79,432.63H39.43a8.37,8.37,0,0,0,0,16.74H257a8.37,8.37,0,0,0,0-16.74ZM98,131.33H198.45V164.8H98Zm16.74,167.39a8.37,8.37,0,0,1,8.37,8.37v8.36H106.39v-8.36A8.36,8.36,0,0,1,114.76,298.72Zm-8.37-50.22v-8.37a8.37,8.37,0,1,1,16.74,0v8.37Zm16.74,92.06a8.37,8.37,0,0,1,16.74,0v8.37H123.13Zm0-58.58v-8.37a8.37,8.37,0,0,1,16.74,0V282Zm16.74-67H123.13v-8.37a8.37,8.37,0,1,1,16.74,0Zm8.37,16.74a8.36,8.36,0,0,1,8.36,8.37v8.37H139.87v-8.37A8.36,8.36,0,0,1,148.24,231.76Zm-8.37,75.33a8.37,8.37,0,1,1,16.73,0v8.36H139.87Zm16.73,33.47a8.37,8.37,0,0,1,16.74,0v8.37H156.6Zm0-58.58v-8.37a8.37,8.37,0,0,1,16.74,0V282Zm0-67v-8.37a8.37,8.37,0,0,1,16.74,0V215Zm16.74,92.07a8.37,8.37,0,0,1,16.74,0v8.36H173.34Zm0-58.59v-8.37a8.37,8.37,0,0,1,16.74,0v8.37ZM89.65,206.65a8.37,8.37,0,0,1,16.74,0V215H89.65Zm0,67a8.37,8.37,0,0,1,16.74,0V282H89.65Zm0,66.95a8.37,8.37,0,0,1,16.74,0v8.37H89.65Zm16.74,75.33H89.65v-8.37a8.37,8.37,0,0,1,16.74,0Zm0-41.85a8.37,8.37,0,1,1,16.74,0v8.37H106.39Zm33.48,41.85H123.13v-8.37a8.37,8.37,0,0,1,16.74,0Zm0-41.85a8.37,8.37,0,1,1,16.73,0v8.37H139.87Zm33.47,41.85H156.6v-8.37a8.37,8.37,0,0,1,16.74,0Zm0-41.85a8.37,8.37,0,0,1,16.74,0v8.37H173.34Zm33.48,41.85H190.08v-8.37a8.37,8.37,0,0,1,16.74,0Zm0-67H190.08v-8.37a8.37,8.37,0,0,1,16.74,0Zm0-66.95H190.08v-8.37a8.37,8.37,0,0,1,16.74,0Zm0-67H190.08v-8.37a8.37,8.37,0,0,1,16.74,0Z"/></g></g></svg>',
             '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#719ccb;}</style></defs><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><rect class="cls-1" width="500" height="500" rx="40"/><path class="cls-2" d="M253.77,251.6H87.66a4,4,0,0,0-4,4v161c-1.21,15-6.07,22.08-17,24.31a4.18,4.18,0,0,0-1,.06,22.18,22.18,0,0,1-26.62-21.54V281.62h-8V419.11s0,.06,0,.09,0,.12,0,.18v.27h0a30.19,30.19,0,0,0,30.14,29.72c.7,0,1.41-.06,2.11-.11a4.4,4.4,0,0,0,.73.07H224.43A33.37,33.37,0,0,0,257.76,416V255.6A4,4,0,0,0,253.77,251.6ZM109.31,277.24H237.17v8H109.31ZM237.23,302.7v34.76H159V302.7Zm-127.92-3.95h35.52v8H109.31Zm0,17.49h35.52v8H109.31Zm0,17.48h35.52v8H109.31Zm56.41,80.35H109.31v-8h56.41Zm0-17.68H109.31v-8h56.41Zm0-17.67H109.31v-8h56.41Zm0-17.68H109.31v-8h56.41Zm71.52,53H180.83v-8h56.41Zm0-17.68H180.83v-8h56.41Zm0-17.67H180.83v-8h56.41Zm0-17.68H180.83v-8h56.41Z"/><path class="cls-2" d="M61.19,436a16.7,16.7,0,0,0,16.72-16.22c0-.07,0-.14,0-.2H78V281.66H70V418.92a3.82,3.82,0,0,0-.09.59,8.74,8.74,0,0,1-17.48-.31v-.37c0-.11,0-.22,0-.32V281.66h-8V419.59h0A16.78,16.78,0,0,0,61.19,436Z"/><rect class="cls-2" x="57.82" y="281.73" width="7.99" height="138.12"/><path class="cls-2" d="M462.49,449.37V340.22H287.86V449.37ZM342.43,356.6a5.46,5.46,0,0,1,5.46-5.46h54.57a5.45,5.45,0,0,1,5.46,5.46v21.82a5.45,5.45,0,0,1-5.46,5.46H347.89a5.46,5.46,0,0,1-5.46-5.46Z"/><rect class="cls-2" x="293.32" y="143.77" width="163.71" height="21.83"/><rect class="cls-2" x="353.35" y="198.34" width="43.66" height="10.91"/><rect class="cls-2" x="353.35" y="362.05" width="43.66" height="10.91"/><path class="cls-2" d="M446.12,285.65V176.51H304.23V285.65ZM342.43,192.88a5.47,5.47,0,0,1,5.46-5.46h54.57a5.46,5.46,0,0,1,5.46,5.46v21.83a5.46,5.46,0,0,1-5.46,5.46H347.89a5.47,5.47,0,0,1-5.46-5.46Z"/><rect class="cls-2" x="276.95" y="296.57" width="196.46" height="32.74"/></g></g></svg>'
         ],
+        isLoggedIn: isLoggedIn
     });
+};
+
+exports.postRecyclePickup = (req, res, next) => {
+    let isLoggedIn = false;
+    if(req.session)
+        isLoggedIn = req.session.isLoggedIn;
+    const address = req.query.address;
+    if(!address){
+        recyclePickup.materials = [];
+        req.body.glass?recyclePickup.materials.push('glass'):null;
+        req.body.metal?recyclePickup.materials.push('metal'):null;
+        req.body.hardPlastic?recyclePickup.materials.push('hardPlastic'):null;
+        req.body.paper?recyclePickup.materials.push('paper'):null;
+        recyclePickup.weight = req.body.weight;
+        // console.log(recyclePickup);
+        res.render('functionalities/recycle-pickup',{
+            pageTitle: 'PickUp',
+            isLoggedIn: isLoggedIn
+        });
+    }
+    else{
+        const houseNo = req.body.houseNo;
+        const area = req.body.area;
+        const city = req.body.city;
+        const state = req.body.state;
+        const country = req.body.country;
+        const pincode = req.body.pincode;
+        const address = {
+            houseNo: houseNo,
+            area: area,
+            city: city,
+            state: state,
+            country: country,
+            pincode: pincode
+        };
+        const pickupUser = new PickupUser(req.session.user._id, recyclePickup.materials, recyclePickup.weight, address);
+        pickupUser.save()
+        .then(result => {
+            const message = 'Your PickUp is confirmed. We will collect items from the given address within 72 hours';
+            twilio.sendSMS(req.session.user.mobileNo, message)
+            .then(message => {
+                // console.log(message);
+                console.log('Pickup confirmed');
+                res.redirect('/');
+            })
+            .catch(err => console.log(err));
+        })
+        .catch(err => console.log(err));
+    }
 };

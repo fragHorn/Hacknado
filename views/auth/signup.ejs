@@ -1,0 +1,27 @@
+<%- include('../include/head.ejs') %>
+        <link href = '/CSS/navbar.css' type = 'text/css' rel = 'stylesheet'/>
+        <link href = '/CSS/signup.css' type = 'text/css' rel = 'stylesheet'/>
+    </head>
+    <body>
+        <%- include('../include/navbar.ejs') %>
+        <main>
+            <div class = 'container'>
+                <h1 class = 'heading'>Signup</h1>
+                <form action = '/auth/signup' method = 'POST'>
+                    <div class = 'input_div'>
+                        <label for = 'name' class = 'input_label'>Name</label>
+                        <input type = 'text' id = 'name' name = 'name' class = 'input_field'/>
+                    </div>
+                    <div class = 'input_div'>
+                        <label for = 'email' class = 'input_label'>Email</label>
+                        <input type = 'email' id = 'email' name = 'email' class = 'input_field'/>
+                    </div>
+                    <div class = 'input_div'>
+                        <label for = 'mobile-no' class = 'input_label'>Mobile Number</label>
+                        <input type = 'number' id = 'mobile-no' name = 'mobileNo' class = 'input_field'/>
+                    </div>
+                    <button type = 'submit' class = 'submit_signup'>SignUp</button>
+                </form>
+            </div>
+        </main>
+    <%- include('../include/end.ejs') %>

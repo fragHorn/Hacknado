@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
 
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
 .navbar{
     height: 60px;
     width: 100%;

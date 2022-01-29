@@ -17,7 +17,7 @@
         <div class = 'recycle_portion' id = 'recycle-part'>
             <div class = 'options'>
                 <p id = 'heading'>RECYCLE NOW</p>
-                <form action = '#' method = 'POST'>
+                <form action = '#' method = 'POST' id = 'form'>
                     <p class = 'sub-heading'>Select Materials</p>
                     <div class = 'select_materials'>
                         <input type = 'checkbox' name = 'glass' id = 'glass' class = 'input-hidden'>
@@ -81,8 +81,8 @@
                             </div>
                     </div>
                     <div class = 'submit_div'>
-                        <button type = 'submit' class = 'button_submit active_button'>PickUp</button>
-                        <button type = 'submit' class = 'button_submit'>Drop-Off</button>
+                        <button type = 'submit' class = 'button_submit active_button' id = 'pickup'>PickUp</button>
+                        <button type = 'submit' class = 'button_submit' id = 'drop-off'>Drop-Off</button>
                     </div>
                 </form>
             </div>
@@ -91,4 +91,16 @@
             </div>
         </div>
     </main>
+    <script>
+        const pickup = document.getElementById('pickup');
+        const dropOff = document.getElementById('drop-off');
+        const form = document.getElementById('form');
+        pickup.addEventListener('click', () => {
+            form.action = '/recycle/pickup';
+        });
+
+        dropOff.addEventListener('click', () => {
+            form.action = '/recycle/dropoff';
+        });
+    </script>
 <%- include('./include/end.ejs') %>

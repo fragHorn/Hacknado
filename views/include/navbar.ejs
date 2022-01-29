@@ -1,7 +1,7 @@
 <nav class = 'navbar'>
     <div class = 'navbar_part1'>
         <div class = 'navbar_item'>
-            <img src = '#'>
+            <a href = '/'><img src = '#'></a>
         </div>
         <div class = 'navbar_item'>
             <a href = '#' class = 'navbar_item__link'>Products</a>
@@ -10,15 +10,21 @@
             <a href = '#' class = 'navbar_item__link'>Re-Use</a>
         </div>
         <div class = 'navbar_item'>
-            <a href = '#recycle-part' class = 'navbar_item__link'>Re-cycle</a>
+            <a href = '/#recycle-part' class = 'navbar_item__link'>Re-cycle</a>
         </div>
     </div>
     <div class = 'navbar_part2'>
-        <div class = 'navbar_item button'>
-            <a href = '#' class = 'navbar_item__link'>Login</a>
-        </div>
-        <div class = 'active navbar_item button'>
-            <a href = '#' class = 'navbar_item__link active__link'>Sign Up</a>
-        </div>
+        <% if(!isLoggedIn) {%>
+            <div class = 'navbar_item button'>
+                <a href = '/auth/login' class = 'navbar_item__link'>Login</a>
+            </div>
+            <div class = 'active navbar_item button'>
+                <a href = '/auth/signup' class = 'navbar_item__link active__link'>Sign Up</a>
+            </div>
+        <% } else {%>
+            <div class = 'active navbar_item button'>
+                <a href = '/auth/logout' class = 'navbar_item__link active__link'>Logout</a>
+            </div>
+        <% }%>
     </div>
 </nav>
