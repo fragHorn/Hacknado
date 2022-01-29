@@ -5,6 +5,90 @@
 <body>
     <%- include('./include/navbar.ejs') %>
     <main>
-        <p> this is a temp paragraph</p>
+        <div class = 'img_div'>
+            <div class = 'text_over_container'>
+                <p id = 'first-line'>92,00,000 KGs</p>
+                <p id = 'second-line'>of plaStic Waste</p>
+                <p id = 'third-line'>is generated daily in</p>
+                <p id = 'fourth-line'>India.</p>
+                <a href = '#recycle-part' id = "button_link">RECYCLE NOW</a>
+            </div>
+        </div>
+        <div class = 'recycle_portion' id = 'recycle-part'>
+            <div class = 'options'>
+                <p id = 'heading'>RECYCLE NOW</p>
+                <form action = '#' method = 'POST'>
+                    <p class = 'sub-heading'>Select Materials</p>
+                    <div class = 'select_materials'>
+                        <input type = 'checkbox' name = 'glass' id = 'glass' class = 'input-hidden'>
+                        <div class = 'material_item'>
+                            <label for = 'glass'>
+                                <%- images[0] %>
+                                <p class = 'material_item_name'>Glass</p>
+                            </label>
+                        </div>
+                        <input type = 'checkbox' name = 'hardPlastic' id = 'hard-plastic' class = 'input-hidden'>
+                        <div class = 'material_item'>
+                            <label for = 'hard-plastic'>
+                                <%- images[1] %>
+                                <p class = 'material_item_name'>Plastic</p>
+                            </label>
+                        </div>
+                        <input type = 'checkbox' name = 'metal' id = 'metal' class = 'input-hidden'>
+                        <div class = 'material_item'>
+                            <label for = 'metal'>
+                                <%- images[2] %>
+                                <p class = 'material_item_name'>Metal</p>
+                            </label>
+                        </div>
+                        <input type = 'checkbox' name = 'paper' id = 'paper' class = 'input-hidden'>
+                        <div class = 'material_item'>
+                            <label for = 'paper'>
+                                <%- images[3] %>
+                                <p class = 'material_item_name'>Paper</p>
+                            </label>
+                        </div>
+                    </div>
+                    <p class = 'sub-heading2'>Select Weight</p>
+                    <div class = 'select_weight'>
+                        <input type = 'radio' name = 'weight' id = '1-15' class = 'input-hidden' value = 'light'>
+                            <div class = 'weight_item'>
+                                <label for = '1-15'>
+                                    <img src = '/Images/Weights/0-15.jpg'/>
+                                    <p class = 'weight_item_name'>1-15 KG</p>
+                                </label>
+                            </div>
+                        <input type = 'radio' name = 'weight' id = '15-50' class = 'input-hidden' value = 'normal'>
+                            <div class = 'weight_item'>
+                                <label for = '15-50'>
+                                    <img src = '/Images/Weights/15-50.jpg'/>
+                                    <p class = 'weight_item_name'>15-50 KG</p>
+                                </label>
+                            </div>
+                        <input type = 'radio' name = 'weight' id = '50-300' class = 'input-hidden' value = 'heavy'>
+                            <div class = 'weight_item'>
+                                <label for = '50-300'>
+                                    <img src = '/Images/Weights/50-300.jpg'/>
+                                    <p class = 'weight_item_name'>50-300 KG</p>
+                                </label>
+                            </div>
+                        <input type = 'radio' name = 'weight' id = '300+' class = 'input-hidden' value = 'veryHeavy'>
+                            <div class = 'weight_item'>
+                                <label for = '300+'>
+                                    <img src = '/Images/Weights/300+.jpg'/>
+                                    <p class = 'weight_item_name'>300+ KG</p>
+                                </label>
+                            </div>
+                    </div>
+                    <div class = 'submit_div'>
+                        <button type = 'submit' class = 'button_submit active_button'>PickUp</button>
+                        <button type = 'submit' class = 'button_submit'>Drop-Off</button>
+                    </div>
+                </form>
+            </div>
+            <div class = 'img_recycle_portion'>
+                <img src = '/Images/recycle-portion.jpg'>
+            </div>
+        </div>
     </main>
 <%- include('./include/end.ejs') %>
