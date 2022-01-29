@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+
+main{
+    width: 100%;
+}
+
+.container{
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position:relative;
+}
+
+form{
+    width: 70%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.container_item{
+    height: 140px;
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* border: 1px solid green; */
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px 5px rgb(238, 237, 237);
+}
+
+.material_div{
+    height: 140px;
+    width:60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quantity_div{
+    height: 140px;
+    width:30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left:1px solid rgb(219, 219, 219);
+    padding-left: 40px;
+}
+
+.select_materials{
+    height: 90%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    box-sizing: border-box;
+    /* margin-bottom: 30px; */
+}
+
+.input-hidden{
+    position: absolute;
+    left: -99999px;
+}
+
+input[type=radio]:checked + div[class=material_item]>label>svg{
+    border: 2px solid green;
+    border-radius: 10px;
+}
+
+.material_item{
+    height: 100%;
+    width: 20%;
+    border-radius: 10px;
+}
+
+.sub-heading{
+    margin: 0px;
+    /* margin-left: -450px; */
+    /* margin-top:20px; */
+    /* margin-bottom: 30px; */
+    font-family: 'Ubuntu Mono', monospace;
+    color: rgb(5, 102, 158);
+    font-size: 1.3rem;
+    font-weight:300;
+}
+
+.material_item_name{
+    margin: 0px;
+    padding: 10px 0px 0px 0px;
+    text-align: center;
+    font-family: 'Ubuntu Mono', monospace;
+    color: darkblue;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.input_field{
+    border: none;
+    border-bottom: 3px solid darkblue;
+    background-color: white;
+    height: 20px;
+    width: 300px;
+    margin-left: 40px;
+    font-family: 'Fredoka One', cursive;
+    color: black;   
+    /* margin: 0px 0px 0px -12px; */
+}
+
+.input_field:focus{
+    border:none;
+    outline: none;
+    border-bottom: 3px solid darkblue;
+    background-color: white;
+    font-family: 'Fredoka One', cursive;
+    color: black;
+    font-weight: lighter;
+}
+
+.add_button{
+    margin: 15px 0px 0px 95%;
+    font-family: 'Fredoka One', cursive;
+    height: 40px;
+    width: 80px;
+    padding: 10px 10px;
+    text-align: center;
+    box-sizing: border-box;
+    background-color: darkblue;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: 1px solid darkblue;
+    color: white;
+    box-sizing: border-box;
+}
+
+.add_button:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.submit_form{
+    margin: 30px 0px 0px 0px;
+    font-family: 'Fredoka One', cursive;
+    height: 50px;
+    width: 200px;
+    padding: 10px 10px;
+    box-sizing: border-box;
+    background-color: darkblue;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    border: 1px solid darkblue;
+    color: white;
+    box-sizing: border-box;
+}
+
+.submit_form:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}

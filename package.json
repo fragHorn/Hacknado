@@ -10,7 +10,8 @@
   "author": "Umesh",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "sass": "^1.49.0"
   },
   "dependencies": {
     "body-parser": "^1.19.1",

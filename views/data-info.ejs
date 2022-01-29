@@ -1,0 +1,65 @@
+<%- include('./include/head.ejs') %>
+    <link href = '/CSS/navbar.css' type = 'text/css' rel = 'stylesheet'/>
+    <link href = '/CSS/data-info.css' type = 'text/css' rel = 'stylesheet'/>
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<body>
+    <%- include('./include/navbar.ejs') %>
+    <main>
+        <% let paper = material[0] %>
+        <% let glass = material[1] %>
+        <% let plastic = material[2] %>
+        <% let metal = material[3] %>
+
+        <div class = 'container'>
+            <div class = 'demographics'>
+                <canvas id="myChart"></canvas>
+            </div>
+            <div class = 'stats'>
+                <div>
+                    <p id = 'fourth-line'>Keep It UP!</p>
+                    <p id = 'second-line'>you have re-used</p>
+                    <p id = 'first-line'><%= sum %> KGs</p>
+                    <p id = 'second-line'>of waste Material.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        const xValues = ["Paper", "Glass", "Plastic", "Metal"];
+        const yValues = [];
+        const barColors = [
+            "#b91d47",
+            "#00aba9",
+            "#2b5797",
+            "#e8c3b9",
+        ];
+        let p1 = <%= paper %>;
+        let p2 = <%= glass %>;
+        let p3 = <%= plastic %>;
+        let p4 = <%= metal %>;
+
+        yValues.push(p1);
+        yValues.push(p2);
+        yValues.push(p3);
+        yValues.push(p4);
+
+        new Chart("myChart", {
+        type: "doughnut",
+        data: {
+            labels: xValues,
+            datasets: [{
+            backgroundColor: barColors,
+            data: yValues
+            }]
+        },
+        options: {
+            title: {
+            display: true,
+            text: "Materials ReUsed"
+            }
+        }
+        });
+</script>
+
+    <%- include('./include/end.ejs') %>

@@ -1,0 +1,104 @@
+<%- include('../include/head.ejs') %>
+    <link href = '/CSS/navbar.css' type = 'text/css' rel = 'stylesheet'/>
+    <link href = '/CSS/reuse.css' type = 'text/css' rel = 'stylesheet'/>
+</head>
+<body>
+    <%- include('../include/navbar.ejs') %>
+    <main>
+        <div class = 'container' id ='parent_div'>
+            <form action = '/reuse' method = 'POST' id = 'form'>
+                <div class = 'container_item'>
+                    <div class = 'material_div'>
+                        <p class = 'sub-heading'>Select Materials</p>
+                        <div class = 'select_materials'>
+                            <input type = 'radio' name = 'material' id = 'glass' class = 'input-hidden' value = 'glass'>
+                            <div class = 'material_item'>
+                                <label for = 'glass'>
+                                    <%- images[0] %>
+                                    <p class = 'material_item_name'>Glass</p>
+                                </label>
+                            </div>
+                            <input type = 'radio' name = 'material' id = 'hard-plastic' class = 'input-hidden' value = 'plastic'>
+                            <div class = 'material_item'>
+                                <label for = 'hard-plastic'>
+                                    <%- images[1] %>
+                                    <p class = 'material_item_name'>Plastic</p>
+                                </label>
+                            </div>
+                            <input type = 'radio' name = 'material' id = 'metal' class = 'input-hidden' value = 'metal'>
+                            <div class = 'material_item'>
+                                <label for = 'metal'>
+                                    <%- images[2] %>
+                                    <p class = 'material_item_name'>Metal</p>
+                                </label>
+                            </div>
+                            <input type = 'radio' name = 'material' id = 'paper' class = 'input-hidden' value = 'paper'>
+                            <div class = 'material_item'>
+                                <label for = 'paper'>
+                                    <%- images[3] %>
+                                    <p class = 'material_item_name'>Paper</p>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = 'quantity_div'>
+                        <p class = 'sub-heading'>Quantity</p>
+                        <input type = 'number' class = 'input_field' name = 'quantity'/>
+                    </div>
+                </div>
+                <div id = 'add' class = 'add_button'>ADD</div>
+                <button type = 'submit' class = 'submit_form'>Add To Reuse</button>
+            </form>
+        </div>
+    </main>
+    <script>
+        const formEle = document.getElementById('form');
+        const addButton = document.getElementById('add');
+        let count = 1;
+        addButton.addEventListener('click', () => {
+            const html = 
+            `<div class = 'container_item'>
+                    <div class = 'material_div'>
+                        <p class = 'sub-heading'>Select Materials</p>
+                        <div class = 'select_materials'>
+                            <input type = 'radio' name = 'material${count}' id = 'glass' class = 'input-hidden' value = 'glass'>
+                            <div class = 'material_item'>
+                                <label for = 'glass'>
+                                    <%- images[0] %>
+                                    <p class = 'material_item_name'>Glass</p>
+                                </label>
+                            </div>
+                            <input type = 'radio' name = 'material${count}' id = 'hard-plastic' class = 'input-hidden' value = 'plastic'>
+                            <div class = 'material_item'>
+                                <label for = 'hard-plastic'>
+                                    <%- images[1] %>
+                                    <p class = 'material_item_name'>Plastic</p>
+                                </label>
+                            </div>
+                            <input type = 'radio' name = 'material${count}' id = 'metal' class = 'input-hidden' value = 'metal'>
+                            <div class = 'material_item'>
+                                <label for = 'metal'>
+                                    <%- images[2] %>
+                                    <p class = 'material_item_name'>Metal</p>
+                                </label>
+                            </div>
+                            <input type = 'radio' name = 'material${count}' id = 'paper' class = 'input-hidden' value = 'paper'>
+                            <div class = 'material_item'>
+                                <label for = 'paper'>
+                                    <%- images[3] %>
+                                    <p class = 'material_item_name'>Paper</p>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = 'quantity_div'>
+                        <p class = 'sub-heading'>Quantity</p>
+                        <input type = 'number' class = 'input_field' name = 'quantity${count}'/>
+                    </div>
+                </div>`;
+            formEle.insertAdjacentHTML('afterbegin', html);
+            count++;
+        });
+        
+    </script>
+    <%- include('../include/end.ejs') %>
