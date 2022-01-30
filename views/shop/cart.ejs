@@ -1,0 +1,23 @@
+<%- include('../include/head.ejs') %>
+    <link href = '/CSS/navbar.css' type = 'text/css' rel = 'stylesheet'/>
+    <link href = '/CSS/cart.css' type = 'text/css' rel = 'stylesheet'/>
+</head>
+<body>
+    <%- include('../include/navbar.ejs') %>
+    <main>
+        <div class = 'container'>
+            <% for(let item of items) { %>  
+                <div class = 'item-container'>
+                    <div class = 'img-container'>
+                        <img src = '/<%=item.imageUrl%>'/>
+                    </div>
+                    <div class = 'about-item'>
+                        <p class = 'heading'><%= item.title%></p>
+                        <p class = 'sub-heading'>Qty: <%= item.qty %></p>
+                    </div>
+                </div>
+            <% }%>
+            <button class = 'submit_form'>Order!</button>
+        </div>
+    </main>
+    <%- include('../include/end.ejs') %>

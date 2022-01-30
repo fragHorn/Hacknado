@@ -14,8 +14,10 @@
             <div class = 'btn_container'>
                 <form action = '/cart' method = 'POST'>
                     <button type ='submit'>Add To Cart</button>
-                    <input type = 'hidden' name = 'title' value = '<%= title%>'/>
+                    <input type = 'hidden' name = 'title' value = '<%= title %>'/>
+                    <input type = 'hidden' name = 'id' value = '<%= id %>'/>
                     <input type = 'hidden' name = 'price' value = '<%= price %>'/>
+                    <input type = 'hidden' name = 'image' value = '<%= image %>'/>
                 </form>
             </div>
         </div>

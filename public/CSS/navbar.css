@@ -74,3 +74,13 @@ body{
     font-weight: bold;
     opacity: 0.8;
 }
+
+.cart_icon{
+    height: 50px;
+    width: 50px;
+}
+
+.cart_icon>img{
+    height: 100%;
+    width: 100%;
+}
