@@ -3,6 +3,7 @@ const res = require("express/lib/response");
 const PickupUser = require('../models/pickup-user');
 const twilio = require('../util/twilio');
 const DataUser = require('../models/data-user');
+const MLConnect = require('../util/ML-connect');
 
 const recyclePickup = {};
 
@@ -132,6 +133,7 @@ exports.getDataInfo = (req, res, next) => {
 
 exports.postIdentifyMaterials = (req, res, next) => {
     const image = req.file;
-    console.log(image);
+    // console.log(image);
+    MLConnect.sendImageFile(image.path);    
     res.redirect('/reuse');
 };
