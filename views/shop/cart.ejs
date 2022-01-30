@@ -6,17 +6,26 @@
     <%- include('../include/navbar.ejs') %>
     <main>
         <div class = 'container'>
-            <% for(let item of items) { %>  
+            <% if(items.length) {%>
+                <% for(let item of items) { %>  
+                    <div class = 'item-container'>
+                        <div class = 'img-container'>
+                            <img src = '/<%=item.imageUrl%>'/>
+                        </div>
+                        <div class = 'about-item'>
+                            <p class = 'heading'><%= item.title%></p>
+                            <p class = 'sub-heading'>Qty: <%= item.qty %></p>
+                            <a href = '/delete-item/<%= item.prodId %>'>
+                                <img src = '/images/delete.png'/>
+                            </a>
+                        </div>
+                    </div>
+                <% }%>
+            <% } else {%>
                 <div class = 'item-container'>
-                    <div class = 'img-container'>
-                        <img src = '/<%=item.imageUrl%>'/>
-                    </div>
-                    <div class = 'about-item'>
-                        <p class = 'heading'><%= item.title%></p>
-                        <p class = 'sub-heading'>Qty: <%= item.qty %></p>
-                    </div>
+                    <p class = 'sub-heading' style = 'margin: auto;'>No items in the cart!!!</p>
                 </div>
-            <% }%>
+            <%}%>
             <button class = 'submit_form'>Order!</button>
         </div>
     </main>

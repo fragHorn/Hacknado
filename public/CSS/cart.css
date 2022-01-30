@@ -59,7 +59,7 @@ main{
     color: rgb(5, 102, 158);
     font-size: 1.3rem;
     font-weight:300;
-    margin-right: 40px; 
+    padding-right: 20px; 
 }
 
 .heading{
@@ -71,6 +71,7 @@ main{
     color: green;
     font-size: 1.5rem;
     font-weight: bold;
+    margin-right: 40px;
 }
 
 .submit_form{
@@ -94,4 +95,9 @@ main{
 .submit_form:hover{
     cursor: pointer;
     opacity: 0.8;
+}
+
+.about-item>a>img{
+    height: 40px;
+    width: 40px;
 }

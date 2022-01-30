@@ -70,4 +70,16 @@ module.exports = class User{
         const db = getDB();
         return db.collection('users').findOne({_id: new ObjectId(userId)});
     }
+
+    static deleteItemFromCart(userId, prodId){
+        const db = getDB();
+        return db.collection('users').findOne({_id: new ObjectId(userId)})
+        .then(user => {
+            const prodIndex = user.cart.items.findIndex(item => item.prodId === prodId);
+            const updatedItems = [...user.cart.items];
+            updatedItems.splice(prodIndex, 1);
+            return db.collection('users').updateOne({_id: new ObjectId(userId)} ,{$set: {cart: {items: updatedItems}}});
+        })
+        .catch(err => console.log(err));
+    }
 }

@@ -64,3 +64,14 @@ exports.getCart = (req, res, next) => {
     })
     .catch(err => console.log(err));
 };
+
+
+exports.getDeleteItem = (req, res, next) => {
+    const prodId = req.params.prodId;
+    User.deleteItemFromCart(req.session.user._id, prodId)
+    .then(result => {
+        console.log('Item deleted from cart!!!');
+        res.redirect('/cart');
+    })
+    .catch(err => console.log(err));
+};
