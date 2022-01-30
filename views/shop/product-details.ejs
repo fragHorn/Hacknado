@@ -1,0 +1,23 @@
+<%- include('../include/head.ejs') %>
+    <link href = '/CSS/navbar.css' type = 'text/css' rel = 'stylesheet'/>
+    <link href = '/CSS/product-details.css' type = 'text/css' rel = 'stylesheet'/>
+</head>
+<body>
+    <%- include('../include/navbar.ejs') %>
+    <main>
+        <div class = 'container'>
+            <p class = 'heading'><%= title %></p>
+            <div class = 'img_container'>
+                <img src = '/<%= image %>'>
+            </div>
+            <p class = 'sub-heading'>Price: Rs<%= price %></p>
+            <div class = 'btn_container'>
+                <form action = '/cart' method = 'POST'>
+                    <button type ='submit'>Add To Cart</button>
+                    <input type = 'hidden' name = 'title' value = '<%= title%>'/>
+                    <input type = 'hidden' name = 'price' value = '<%= price %>'/>
+                </form>
+            </div>
+        </div>
+    </main>
+    <%- include('../include/end.ejs') %>

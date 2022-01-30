@@ -90,6 +90,7 @@ main{
     display: flex;
     align-items: center;
     justify-content: space-around;
+    padding-bottom:40px;
 }
 
 .options{
@@ -194,7 +195,7 @@ div[class = img_recycle_portion]>img{
 .submit_div{
     width: 50%;
     display:flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin-top: 60px;
 }

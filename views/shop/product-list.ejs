@@ -1,0 +1,87 @@
+<%- include('../include/head.ejs') %>
+    <link href = '/CSS/navbar.css' type = 'text/css' rel = 'stylesheet'/>
+    <link href = '/CSS/product-list.css' type = 'text/css' rel = 'stylesheet'/>
+</head>
+<body>
+    <%- include('../include/navbar.ejs') %>
+    <main>
+        <div class = 'outer-container'>
+            <p class = 'heading'>Products</p>
+            <p class = 'sub-heading'>created entirely with the process of recycling</p>
+            <div class = 'container'>
+                <div class = 'items'>
+                    <div class = 'img_container'>
+                        <img src = 'images/products/straws.jpg'>
+                    </div>    
+                    <div class = 'btn_container'>
+                        <form action = '/products/item1' method = 'POST'>
+                            <button type ='submit'>Details</button>
+                            <input type = 'hidden' name = 'title' value = 'Earth Friendly Straws'/>
+                            <input type = 'hidden' name = 'price' value = '20'/>
+                            <input type = 'hidden' name = 'image' value = 'Images/Products/straws.jpg'/>
+                        </form>
+                        <form action = '/cart' method = 'POST'>
+                            <button type ='submit'>Add To Cart</button>
+                            <input type = 'hidden' name = 'title' value = 'Earth Friendly Straws'/>
+                            <input type = 'hidden' name = 'price' value = '20'/>
+                        </form>
+                    </div>
+                </div>
+                <div class = 'items'>
+                    <div class = 'img_container'>
+                        <img src = 'images/products/mat.jpg'>
+                    </div>    
+                    <div class = 'btn_container'>
+                        <form action = '/products/item2' method = 'POST'>
+                            <button type ='submit'>Details</button>
+                            <input type = 'hidden' name = 'title' value = 'Mat'/>
+                            <input type = 'hidden' name = 'price' value = '90'/>
+                            <input type = 'hidden' name = 'image' value = 'Images/Products/mat.jpg'/>
+                        </form>
+                        <form action = '/cart' method = 'POST'>
+                            <button type ='submit'>Add To Cart</button>
+                            <input type = 'hidden' name = 'title' value = 'Mat'/>
+                            <input type = 'hidden' name = 'price' value = '90'/>
+                        </form>
+                    </div>
+                </div>
+                <div class = 'items'>
+                    <div class = 'img_container'>
+                        <img src = 'images/products/bags.jpg'>
+                    </div>    
+                    <div class = 'btn_container'>
+                        <form action = '/products/item3' method = 'POST'>
+                            <button type ='submit'>Details</button>
+                            <input type = 'hidden' name = 'title' value = 'Bag'/>
+                            <input type = 'hidden' name = 'price' value = '200'/>
+                            <input type = 'hidden' name = 'image' value = 'Images/Products/bags.jpg'/>
+                        </form>
+                        <form action = '/cart' method = 'POST'>
+                            <button type ='submit'>Add To Cart</button>
+                            <input type = 'hidden' name = 'title' value = 'Bag'/>
+                            <input type = 'hidden' name = 'price' value = '200'/>
+                        </form>
+                    </div>
+                </div>
+                <div class = 'items'>
+                    <div class = 'img_container'>
+                        <img src = 'images/products/trash-bags.jpg'>
+                    </div>    
+                    <div class = 'btn_container'>
+                        <form action = '/products/item4' method = 'POST'>
+                            <button type ='submit'>Details</button>
+                            <input type = 'hidden' name = 'title' value = 'Eco-Friendly Trash Bags'/>
+                            <input type = 'hidden' name = 'price' value = '10'/>
+                            <input type = 'hidden' name = 'image' value = 'Images/Products/trash-bags.jpg'/>
+                        </form>
+                        <form action = '/cart' method = 'POST'>
+                            <button type ='submit'>Add To Cart</button>
+                            <input type = 'hidden' name = 'title' value = 'Eco-Friendly Trash Bags'/>
+                            <input type = 'hidden' name = 'price' value = '10'/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <%- include('../include/end.ejs') %>

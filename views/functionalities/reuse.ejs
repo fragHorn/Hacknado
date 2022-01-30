@@ -50,6 +50,13 @@
                 <button type = 'submit' class = 'submit_form'>Add To Reuse</button>
             </form>
         </div>
+        <div class = 'machine_learning_section'>
+            <p class = 'sub-heading'>Upload Image to identify the waste materials </p>
+            <form action = '/identify-materials' method = 'POST' enctype="multipart/form-data">
+                <input type = 'file' id = 'image' name = 'image'/>
+                <button type = 'submit' class = 'submit_form'>Identify</button>
+            </form>
+        </div>
     </main>
     <script>
         const formEle = document.getElementById('form');

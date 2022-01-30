@@ -108,7 +108,6 @@ exports.postReuse = (req, res, next) => {
 exports.getDataInfo = (req, res, next) => {
     DataUser.findData(req.session.user._id)
     .then(result => {
-        console.log(result);
         const val = [];
         let sum = 0;
         if(result.materials){
@@ -120,7 +119,6 @@ exports.getDataInfo = (req, res, next) => {
                 sum += Number(item);
             });
         }
-        console.log(sum);
         res.render('data-info', {
             pageTitle: 'Data Informatics',
             isLoggedIn: true,
@@ -129,4 +127,11 @@ exports.getDataInfo = (req, res, next) => {
         });
     })
     .catch(err => console.log(err));
+};
+
+
+exports.postIdentifyMaterials = (req, res, next) => {
+    const image = req.file;
+    console.log(image);
+    res.redirect('/reuse');
 };
