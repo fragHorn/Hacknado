@@ -34,6 +34,7 @@ exports.postCart = (req, res, next) => {
     const title = req.body.title;
     const price = req.body.price;
     const imageUrl = req.body.image;
+    console.log(prodId);
     const item = {
         prodId: prodId,
         title: title,
